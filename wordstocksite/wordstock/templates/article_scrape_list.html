@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="margin-top: 2%; margin-bottom: 10%">
+  <h2>Deutschlandfunk articles are as follows:</h2>
+  {% for article in articles %}
+  <p>{{ forloop.counter }} - {{ article }} <br /></p>
+  {% endfor %}
+</div>
+
+{% endblock content %}

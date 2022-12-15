@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container h-100" style="padding-top: 5%">
+  <div class="row h-100 justify-content-center align-items-center">
+    <form class="col-12">
+      <div class="container">
+        <label for="text" class="form-label">Enter a term to search:</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="searchTerm"
+            aria-describedby="basic-addon3"
+          />
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+    <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+      <p>{{ english_translation }}</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

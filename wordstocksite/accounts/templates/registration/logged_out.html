@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Logged out{% endblock %} 
+{% block content %}
+<div id="login-container">
+  <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+    <div id="login-wrapper" class="d-flex justify-content-center">
+      <div class="flex-wrapper">
+        <div class="login-column-wrapper flex-wrapper">
+          <h1>Logged out</h1>
+          <p>
+            You have been successfully logged out. You can
+            <a href="{% url 'login' %}">log in again</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

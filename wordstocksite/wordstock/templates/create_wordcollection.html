@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% load widget_tweaks %} {% block content %}
+<div id="article-container">
+
+  <div id="form-wrapper">
+    <form id="form" method="POST">
+      {% csrf_token %} 
+
+      <div class="flex-wrapper">
+        <div style="flex: 6">
+          {% for field in form %} {{ field|attr:"class:form-control"|attr:"placeholder:Copy a Deutschlandfunk article URL or select one from the list below"}} {% endfor %}
+        </div>
+        <div style="flex: 1" class="d-flex justify-content-center">
+          
+          <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+          
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div
+    class="container w-100"
+    style="margin-top: 2%; margin-bottom: 10%"
+    onclick="clearUrlInput()"
+  >
+  <div class="row">
+    {% for title, link in articles_titles_and_links.items %}
+    
+    <div class="article-row-wrapper flex-wrapper">
+      <div style="flex: 7">
+        <div
+          id="data-row-{{ forloop.counter }}"
+          class="article-column-wrapper flex-wrapper"
+        >
+          <a href="{{ link }}" target="_blank" id="{{ link }}"> {{ title }} </a>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <button
+          id="button-{{ forloop.counter }}"
+          class="btn btn-sm btn-outline-info"
+          onclick="getArticleLink('{{ link }}', '{{ forloop.counter }}')"
+        >
+          Add to URL
+        </button>
+      </div>
+    </div>
+    
+    {% endfor %}
+    </div>
+  </div>
+  
+</div>
+
+{% endblock content %}

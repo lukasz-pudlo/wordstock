@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div id="wordcollection-container">
+  <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+    {% for wordcollection in wordcollections %}
+    <div class="wordcollection-row-wrapper flex-wrapper">
+      <div style="flex: 7">
+        <div
+          id="data-row-{{ forloop.counter }}"
+          class="wordcollection-column-wrapper flex-wrapper"
+        >
+          <a href="{{ wordcollection.get_absolute_url }}">
+            <p>{{ wordcollection.name }}</p></a
+          >
+          <p class="card-subtitle mb-2 text-muted">
+            {{ wordcollection.created }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

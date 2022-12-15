@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Edit your account{% endblock %}
+{% block content %}
+<div id="login-container">
+  <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+    <div id="login-wrapper" class="d-flex justify-content-center">
+      <div class="flex-wrapper">
+        <div class="login-column-wrapper flex-wrapper">
+            <h1>Edit your account</h1>
+            <p>You can edit your account using the following form:</p>
+            
+            <form method="post">
+                <div class="col-md-7">
+
+                    {% for field in user_form %}
+                    
+                        <p>{{ field.label }}: {{ field }}</p>
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                    
+                    {% endfor %}
+                    {% for field in profile_form %}
+                        <p>{{ field.label }}: {{ field }}</p>
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                    {% endfor %}
+
+                    {% if not profile_form.errors %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                
+                                <p id="message">{{ message }}</p>
+                                
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                  </div>
+
+                {% csrf_token %}
+                <p><input type="submit" value="Save changes"></p>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer_scripts %} 
+<script>
+    {{!-- var message = document.getElementById("message")
+    setTimeout(message.remove(), 3000) --}}
+</script>
+{% endblock %}

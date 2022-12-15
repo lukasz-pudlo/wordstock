@@ -1,0 +1,52 @@
+services:
+  db:
+    image: postgres:14.5
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: ["./wait-for-it.sh", "db:5432", "--",
+            "python", "/wordstockproject/wordstocksite/manage.py", "runserver",
+            "0.0.0.0:8000"]
+    restart: always
+    volumes:
+      - .:/wordstockproject
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=wordstocksite.settings.prod
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
+  celery:
+    build: .
+    command: celery -A wordstocksite.wordstocksite worker --loglevel=debug -P eventlet
+
+    volumes:
+      - .:/wordstockproject
+    environment:
+      - DJANGO_SETTINGS_MODULE=wordstocksite.settings.prod
+      - CELERY_BROKER_URL=amqp://lukasz:Consani2022!@rabbitmq:5672//
+    depends_on:
+      - rabbitmq
+      - db
+    links:
+      - rabbitmq
+
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+        - RABBITMQ_DEFAULT_USER=lukasz
+        - RABBITMQ_DEFAULT_PASS=Consani2022!
+    ports:
+      - "5672:5672"   
+      - "15672:15672"

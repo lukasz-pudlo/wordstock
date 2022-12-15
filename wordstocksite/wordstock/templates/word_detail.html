@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div id="word-detail-container">
+  <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+    <div class="button-row-wrapper flex-wrapper">
+      <div style="flex: 7">
+        <h3>Synonyms for {{ word.source_word }} ({{ word.target_word }})</h3>
+      </div>
+
+      <div style="flex: 1">
+        <div class="btn-group btn-group-justified" role="group">
+          <button
+            id="add-entry"
+            class="btn btn-sm btn-outline-info edit"
+            onclick="createEntry()"
+          >
+            Add Synonym
+          </button>
+          <button
+            id="learn"
+            class="btn btn-sm btn-outline-info"
+            onclick="location.href='http://127.0.0.1:8000/wordstock/learn-synonyms/{{word.id}}'"
+          >
+            Learn
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="list-wrapper"></div>
+  </div>
+</div>
+{% endblock content %} {% block footer_scripts %}
+<script id="wordcollection-id" type="application/json">
+  {{word.wordcollection.id}}
+</script>
+<script id="word-id" type="application/json">
+  {{word.id}}
+</script>
+<script id="page-type" type="application/json">
+  "word"
+</script>
+<script src="{% static 'collections.js' %}"></script>
+
+{% endblock %}

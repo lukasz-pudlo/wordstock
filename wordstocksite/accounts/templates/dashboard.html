@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Dashboard{% endblock %} 
+{% block content %}
+<div id="login-container">
+  <div class="container" style="margin-top: 2%; margin-bottom: 10%">
+    <div id="login-wrapper" class="d-flex justify-content-center">
+      <div class="flex-wrapper">
+        <div class="login-column-wrapper flex-wrapper">
+          <h1>Dashboard</h1>
+          <p>
+            Welcome to your dashboard, {{ request.user.first_name|default:request.user.username }}. You can <a href="{% url 'edit' %}">edit your profile</a> or <a href="{% url 'password_reset' %}">change your password</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
