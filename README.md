@@ -9,6 +9,6 @@ Wordstock is a vocabulary learning tool that helps users improve their German la
 
 With Wordstock, users can easily view a list of the most important words in the German language, along with their frequencies of usage. They can also test their knowledge of these words by providing translations in either German or English. By regularly using Wordstock, users can improve their overall vocabulary and language skills, and become more fluent in German.
 
-![Demo of Wordstock's functionality (Part 3)](https://media.giphy.com/media/dxEG45F05DBYl2iu7v/giphy.gif)
+![Demo of Wordstock's functionality (Part 3)](https://media.giphy.com/media/g9xMXTMpUm6FfeNggj/giphy.gif)
 
 Wordstock is a simple and effective tool for learning and practicing the most important words in the German language. Give it a try and see how it can help you improve your language skills!
