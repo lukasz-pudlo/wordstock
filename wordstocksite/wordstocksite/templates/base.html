@@ -37,11 +37,6 @@
           href="{% url 'wordstock:wordcollection_list' %}"
           >Wordstock</a
         >
-        <a
-          class="flex-sm-fill text-sm-center nav-link {% if section == 'dashboard' %} active {% endif %}"
-          href="{% url 'dashboard' %}"
-          >Dashboard</a
-        >
 
         {% if section == 'learn' %}
         <a
@@ -50,6 +45,12 @@
           >Learn</a
         >
         {% endif %}
+        <a
+          class="flex-sm-fill text-sm-center nav-link {% if section == 'dashboard' %} active {% endif %}"
+          href="{% url 'dashboard' %}"
+          >Dashboard</a
+        >
+
         <a
           class="flex-sm-fill text-sm-center nav-link"
           href="{% url 'logout' %}"
