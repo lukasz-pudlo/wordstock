@@ -3,7 +3,7 @@ from celery import Celery
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'wordstocksite.settings.prod')
+                      'wordstocksite.settings')
 
 app = Celery('wordstocksite')
 app.config_from_object('django.conf:settings', namespace='CELERY')
