@@ -25,28 +25,25 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
-
-  celery:
-    build: .
-    command: celery -A wordstocksite.wordstocksite worker --loglevel=debug -P eventlet
-
-    volumes:
-      - .:/wordstockproject
-    environment:
-      - DJANGO_SETTINGS_MODULE=wordstocksite.settings.prod
-      - CELERY_BROKER_URL=amqp://lukasz:Consani2022!@rabbitmq:5672//
-    depends_on:
-      - rabbitmq
-      - db
-    links:
-      - rabbitmq
-
-
   rabbitmq:
     image: rabbitmq:management
+    restart: always
     environment:
-        - RABBITMQ_DEFAULT_USER=lukasz
-        - RABBITMQ_DEFAULT_PASS=Consani2022!
+        - RABBITMQ_USER=lukasz
+        - RABBITMQ_PASSWORD=Consani2022!
+        - CELERY_BROKER_URL=amqp://lukasz:Consani2022!@rabbitmq:5672
     ports:
       - "5672:5672"   
       - "15672:15672"
+    depends_on:
+      - web
+  celery:
+    build: .
+    command: celery -A celery worker
+    restart: always
+    volumes:
+      - .:/wordstockproject
+    environment:
+      - DJANGO_SETTINGS_MODULE=wordstocksite.wordstocksite.settings.prod
+    depends_on:
+      - rabbitmq
