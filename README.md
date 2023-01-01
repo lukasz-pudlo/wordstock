@@ -1,4 +1,4 @@
-# wordstock - accessible at [link](http://157.245.36.123/)
+# wordstock - accessible at [http://157.245.36.123/](http://157.245.36.123/)
 Wordstock: German vocabulary trainer. Built with Django, Javascript, Django Rest Framework, Celery, RabbitMQ. Analyzes real-world news articles to help users learn the most commonly used words in German. Allows users to view and test their knowledge of the most important words in the language.
 
 ![Demo of Wordstock's functionality (Part 1)](https://media.giphy.com/media/iG5jCIdvkgaHepyxIz/giphy.gif)
