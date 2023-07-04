@@ -1,4 +1,4 @@
-# wordstock - accessible at [https://wordstockbuilder.com/](https://wordstockbuilder.com/)
+# wordstock
 Wordstock: German vocabulary trainer. Built with Django, Javascript, Django REST Framework, Celery, RabbitMQ. Analyzes real-world news articles to help users learn the most commonly used words in German. Allows users to view and test their knowledge of the most important words in the language.
 
 ![Demo of Wordstock's functionality (Part 1)](https://media.giphy.com/media/iG5jCIdvkgaHepyxIz/giphy.gif)
